@@ -10,9 +10,10 @@ import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles((theme) => ({
   card: {
     paddingInline: "10px",
+    marginTop: "5px",
   },
 }));
-export default function ImgMediaCard() {
+export default function ImgMediaCard(props) {
   const classes = useStyles();
   return (
     <Card sx={{ maxWidth: 345 }} className={classes.card}>
@@ -20,16 +21,17 @@ export default function ImgMediaCard() {
         component="img"
         alt="green iguana"
         height="140"
-        src="https://mui.com/static/images/cards/contemplative-reptile.jpg"
+        src={props.image}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          {props.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        {/* <Typography variant="body2" color="text.secondary">
           Lizards are a widespread group of squamate reptiles, with over 6,000
           species, ranging across all continents except Antarctica
-        </Typography>
+        </Typography> */}
+        {props.description}
       </CardContent>
       <CardActions>
         <Button size="small">Share</Button>
