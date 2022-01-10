@@ -25,9 +25,9 @@ function Header(props) {
         >
           {title}
         </Typography>
-        <IconButton>
+        {/* <IconButton>
           <SearchIcon />
-        </IconButton>
+        </IconButton> */}
         <Button variant="outlined" size="small">
           Sign up
         </Button>
