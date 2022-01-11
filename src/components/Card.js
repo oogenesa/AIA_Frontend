@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function ImgMediaCard(props) {
+  const onClickImage = () => {
+    window.open(props.link, "_blank").focus();
+  };
   const classes = useStyles();
   return (
     <Card sx={{ maxWidth: 345 }} className={classes.card}>
@@ -24,18 +27,16 @@ export default function ImgMediaCard(props) {
         src={props.image}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="caption" component="div">
           {props.title}
         </Typography>
-        {/* <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography> */}
+
         {props.description}
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small" onClick={() => onClickImage()}>
+          Go to Link{" "}
+        </Button>
       </CardActions>
     </Card>
   );

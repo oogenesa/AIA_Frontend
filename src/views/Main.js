@@ -1,8 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
+
 import { TextField, Button, Container } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { makeStyles } from "@mui/styles";
@@ -12,7 +11,6 @@ import { get_image } from "../api";
 
 const theme = createTheme();
 
-// import Markdown from "./Markdown";
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
@@ -46,10 +44,9 @@ function Main(props) {
 
   React.useEffect(() => {
     const send = "all";
-    console.log("useffect");
+
     get_image(send).then((res) => setFlickerImage(res.items));
   }, []);
-  const { posts, title } = props;
 
   const classes = useStyles();
 
@@ -60,9 +57,11 @@ function Main(props) {
       flicker_img.map((img) => {
         arr.push(
           <ImgMediaCard
+            key={img.media.m}
             image={img.media.m}
             title={img.title}
             desc={img.author}
+            link={img.link}
           />
         );
       });
@@ -70,10 +69,10 @@ function Main(props) {
     return arr;
   };
   const onClickSearch = () => {
-    // console.log("click");
     let send = "all";
+    let str = search_tag;
     if (search_tag !== "") {
-      send = search_tag;
+      send = str.replace(/\s/g, "");
     }
     get_image(send).then((res) => setFlickerImage(res.items));
   };
