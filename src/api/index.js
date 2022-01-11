@@ -6,7 +6,10 @@ export const get_image = (send) => {
   let url = API_URL + "getimage/" + send;
   var str = "";
   return axios
-    .get(url)
+    .get(url, {
+      withCredentials: true,
+      headers: { crossDomain: true, "Content-Type": "application/json" },
+    })
     .then((response) => {
       return response.data;
     })
