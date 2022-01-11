@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://aiaflickerbackend.herokuapp.com/";
+const API_URL = "https://salty-forest-50779.herokuapp.com/";
 
 export const get_image = (send) => {
   let url = API_URL + "getimage/" + send;
