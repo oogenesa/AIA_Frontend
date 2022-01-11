@@ -7,7 +7,7 @@ export const get_image = (send) => {
   var str = "";
   return axios
     .get(url, {
-      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
     })
     .then((response) => {
       return response.data;
